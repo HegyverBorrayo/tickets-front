@@ -8,7 +8,6 @@ export const signIn = values => {
 
   api(`api/auth/signin`, {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json',
     },

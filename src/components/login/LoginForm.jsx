@@ -14,8 +14,18 @@ export default function LoginForm() {
   })
 
   const { mutate, isLoading } = useMutation(signIn, {
+    onCompleted: data => {
+      console.log('dataaaaaaaaaaaaaaaa', data)
+    },
     onSuccess: data => {
       console.log('Se envia todo')
+      console.log(data)
+    },
+    onError: err => {
+      console.log('dio error')
+    },
+    onChange: data => {
+      console.log('ddddddd', data)
     },
   })
 
