@@ -14,6 +14,7 @@ export const api = async (service, options) => {
       res.json()
     })
     .catch(err => {
-      console.error('dio error: ', err)
+      throw new Error(`error en el api ${err}`)
+      //console.error('dio error: ', err)
     })
 }

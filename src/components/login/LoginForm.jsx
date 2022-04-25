@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useMutation } from 'react-query'
 
 export default function LoginForm() {
-  const { isLogin, editingValue } = useSessionContext()
+  const { userSession, setUserSession } = useSessionContext()
   const { values, handleChange, handleSubmit, updateValues } = useForm({
     email: '',
     password: '',
@@ -15,25 +15,24 @@ export default function LoginForm() {
 
   const { mutate, isLoading } = useMutation(signIn, {
     onCompleted: data => {
-      console.log('dataaaaaaaaaaaaaaaa', data)
+      console.log('dataaaaaaaaaaaaaaaa, mutation', data)
     },
-    onSuccess: data => {
-      console.log('Se envia todo')
-      console.log(data)
+    onSuccess: (data, variables, context) => {
+      console.log('succes', data, variables, context)
     },
-    onError: err => {
-      console.log('dio error')
+    onError: (error, variables, context) => {
+      console.log(`rolling back optimistic update with id ${context.id}`)
     },
-    onChange: data => {
-      console.log('ddddddd', data)
+    onMutate: data => {
+      console.log('ddddddd, mutation', data)
     },
   })
 
   useEffect(() => {
-    if (editingValue) {
-      updateValues(editingValue)
+    if (userSession) {
+      updateValues(userSession)
     }
-  }, [editingValue, updateValues])
+  }, [userSession, updateValues])
 
   return (
     <Box>

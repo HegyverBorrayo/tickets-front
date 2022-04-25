@@ -1,4 +1,4 @@
-import { SessionContext } from 'context/AuthContext'
+import { SessionContext } from 'context/SessionContext'
 import { useContext } from 'react'
 
 export default function useSessionContext() {

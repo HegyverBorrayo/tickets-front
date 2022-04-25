@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { SessionProvider } from 'context/AuthContext'
+import { SessionProvider } from 'context/SessionContext'
 import LoginPage from 'pages/LoginPage'
 import queryClient from 'queryClient'
 import { QueryClientProvider } from 'react-query'
